@@ -37,6 +37,21 @@ class WebsiteTest extends TestCase
         }
     }
 
+    public function test_homepage_shows_six_services_and_listing_shows_all(): void
+    {
+        // Homepage section without an explicit limit still shows only 6 (2 full rows)
+        $section = \App\Models\PageSection::where('type', 'service_cards')->first();
+        $data = $section->data;
+        unset($data['limit']);
+        $section->update(['data' => $data]);
+
+        $this->assertSame(7, Service::published()->count());
+        $home = $this->get('/')->getContent();
+        $this->assertSame(6, substr_count($home, 'class="card-mk service-card"'));
+        $this->assertStringNotContainsString('Labour Supply Services</a></h3>', $home);
+        $this->assertSame(7, substr_count($this->get('/services')->getContent(), 'class="card-mk service-card"'));
+    }
+
     public function test_seo_endpoints_and_404(): void
     {
         $this->get('/robots.txt')->assertOk()->assertHeader('Content-Type', 'text/plain; charset=UTF-8')->assertSee('Disallow: /admin/');

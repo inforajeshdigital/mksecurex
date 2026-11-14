@@ -58,7 +58,7 @@
                         <div class="mb-3"><label class="form-label">Columns</label><select name="data[columns]" class="form-select">@foreach(['2', '3', '4'] as $c)<option @selected($d('columns', '3') == $c)>{{ $c }}</option>@endforeach</select></div>
                     @endif
                     @if($has('limit'))
-                        <div class="mb-3"><label class="form-label">Max items <small class="text-muted">(empty = all)</small></label><input type="number" min="1" max="50" name="data[limit]" class="form-control" value="{{ $d('limit') }}"></div>
+                        <div class="mb-3"><label class="form-label">Max items <small class="text-muted">({{ $section->type === 'service_cards' && $page->slug === 'home' ? 'empty = 6 on Homepage' : 'empty = all' }})</small></label><input type="number" min="1" max="50" name="data[limit]" class="form-control" value="{{ $d('limit') }}"></div>
                     @endif
                     @if($has('category'))
                         <div class="mb-3"><label class="form-label">FAQ Category</label><select name="data[category]" class="form-select">@foreach(\App\Http\Controllers\Admin\FaqController::CATEGORIES as $k => $l)<option value="{{ $k }}" @selected($d('category', 'general') === $k)>{{ $l }}</option>@endforeach</select>
