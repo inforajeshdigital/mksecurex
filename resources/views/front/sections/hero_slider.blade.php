@@ -1,8 +1,8 @@
 @php($slides = \App\Models\Slider::where('is_active', true)->orderBy('sort_order')->get())
 @if($slides->isNotEmpty())
-<section class="hero" data-hero aria-roledescription="carousel">
+<section class="hero" data-hero data-overlay="{{ setting('hero_overlay', 'light') }}" aria-roledescription="carousel">
     @foreach($slides as $sl)
-        <div class="hero-slide {{ $loop->first ? 'active' : '' }}" aria-roledescription="slide" aria-label="{{ $loop->iteration }} of {{ $slides->count() }}">
+        <div class="hero-slide {{ $loop->first ? 'active' : '' }} {{ $sl->background_image ? 'has-photo' : '' }}" aria-roledescription="slide" aria-label="{{ $loop->iteration }} of {{ $slides->count() }}">
             <div class="hero-pattern"></div>
             @if($sl->background_image)
                 <div class="hero-bg" style="background-image:url('{{ img_url($sl->background_image) }}')" role="img" aria-label="{{ $sl->image_alt ?: $sl->heading }}"></div>
@@ -11,9 +11,9 @@
             <div class="container">
                 <div class="hero-inner">
                     <div class="row align-items-center w-100 g-5">
-                        <div class="{{ $sl->side_image ? 'col-lg-7' : 'col-lg-9 col-xl-8' }} hero-anim">
+                        <div class="{{ $sl->side_image ? 'col-lg-7' : 'col-lg-8 col-xl-7' }} hero-anim">
                             @if($sl->badge)<div><span class="badge-pill"><i class="fa-solid fa-shield-halved"></i> {{ $sl->badge }}</span></div>@endif
-                            @if($loop->first)<h1>{{ $sl->heading }}</h1>@else<h2 class="h1" style="color:#fff;font-size:clamp(2.1rem,5vw,3.9rem);margin:1.2rem 0 1rem">{{ $sl->heading }}</h2>@endif
+                            @if($loop->first)<h1>{{ $sl->heading }}</h1>@else<h2 class="h1" style="color:#fff;font-size:clamp(2rem,4.3vw,3.5rem);margin:1.2rem 0 1rem;max-width:760px">{{ $sl->heading }}</h2>@endif
                             @if($sl->subheading)<p class="hero-sub">{{ $sl->subheading }}</p>@endif
                             @if($sl->description)<p class="hero-desc">{{ $sl->description }}</p>@endif
                             <div class="d-flex flex-wrap gap-3">

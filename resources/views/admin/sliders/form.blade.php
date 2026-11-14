@@ -30,6 +30,7 @@
                     <div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="show_background" value="1" id="sbg" @checked(old('show_background', $slider->exists ? $slider->show_background : true))><label class="form-check-label fw-semibold" for="sbg">Full-width background<small>Image behind the text with a dark blue overlay</small></label></div>
                     <div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="show_side_image" value="1" id="ssi" @checked(old('show_side_image', $slider->exists ? $slider->show_side_image : false))><label class="form-check-label fw-semibold" for="ssi">Framed image on the right<small>Desktop only. Turn one of these off to avoid seeing the same photo twice.</small></label></div>
                 </div>
+                <div class="form-text mb-2"><i class="fa-solid fa-circle-half-stroke me-1"></i>Banner looks too dark? Change <a href="{{ route('admin.settings', 'general') }}#s_hero_overlay">Banner overlay</a> (None / Light / Medium / Dark).</div>
             </div></div>
             <div class="d-grid gap-2"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk me-1"></i> Save Slide</button><a href="{{ route('admin.homepage') }}#slides" class="btn btn-light">Cancel</a></div>
         </div>
