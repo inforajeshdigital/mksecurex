@@ -27,6 +27,8 @@
             <h3 class="h5">Clear Cache</h3>
             <p class="small text-muted">Clears settings, menu, sitemap, view, route and config caches. Use this if a change doesn’t appear on the website.</p>
             <form action="{{ route('admin.maintenance.cache') }}" method="POST">@csrf<button class="btn btn-gold"><i class="fa-solid fa-rotate me-1"></i> Clear All Cache</button></form>
+            <form action="{{ route('admin.maintenance.migrate') }}" method="POST" class="mt-2" data-confirm="Apply pending database updates now? (Download a backup first.)">@csrf<button class="btn btn-sm btn-soft"><i class="fa-solid fa-database me-1"></i> Run Database Updates</button></form>
+            <div class="form-text">After a new GitHub deploy, click “Run Database Updates”.</div>
         </div></div>
     </div>
     <div class="col-12">

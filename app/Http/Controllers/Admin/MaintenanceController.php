@@ -41,6 +41,24 @@ class MaintenanceController extends AdminController
         return back()->with('success', 'All caches cleared.');
     }
 
+    /** Apply pending database migrations after a Git deploy (no SSH needed). */
+    public function migrate()
+    {
+        try {
+            Artisan::call('migrate', ['--force' => true]);
+            $out = trim(Artisan::output());
+            Cache::flush();
+            Setting::flush();
+            $this->log('maintenance', 'Ran database migrations');
+
+            return back()->with('success', str_contains($out, 'Nothing to migrate') ? 'Database is already up to date.' : 'Database updated successfully.');
+        } catch (\Throwable $e) {
+            report($e);
+
+            return back()->with('error', 'Migration failed: '.$e->getMessage());
+        }
+    }
+
     public function toggle()
     {
         $on = ! setting_on('maintenance_mode');

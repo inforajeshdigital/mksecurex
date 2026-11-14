@@ -10,6 +10,12 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
+// First deploy (no .env yet): send the visitor to the one-time web installer...
+if (! file_exists(__DIR__.'/../.env') && file_exists(__DIR__.'/install.php')) {
+    header('Location: '.rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/').'/install.php', true, 302);
+    exit;
+}
+
 // Register the Composer autoloader...
 require __DIR__.'/../vendor/autoload.php';
 

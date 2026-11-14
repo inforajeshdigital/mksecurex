@@ -1,5 +1,24 @@
 # Deployment Guide – MK Securex
 
+## ⚡ Hostinger (GitHub auto-deploy, no SSH needed)
+The repository already contains the production `vendor/` folder, so a plain `git pull` is enough.
+
+1. **hPanel → Advanced → PHP Configuration:** select **PHP 8.2 or 8.3**.
+2. **hPanel → Databases → MySQL Databases:** create a database + user (note name, user, password).
+3. **hPanel → Advanced → Git:** repository `https://github.com/inforajeshdigital/mksecurex.git`, branch `main`, install path empty (= `public_html`). Turn on **Auto Deployment** and add the webhook URL in GitHub → Settings → Webhooks.
+4. Open your domain. The site redirects to **`/install.php`** (one-time installer):
+   - server check → enter website URL, database details, **your admin email + password**, optional SMTP (Hostinger: `smtp.hostinger.com`, port `465`).
+   - click **Install Website** → `.env` is created (outside the web root), tables + content are created, the installer locks itself.
+5. Log in at **`/admin/login`** and update contact details, WhatsApp number and photos.
+6. Enable SSL in hPanel; if you installed with `http://`, change `APP_URL` in `public_html/.env` to `https://…` (File Manager).
+
+**Future updates:** push to `main` → Hostinger pulls automatically → if the update contains database changes, go to Admin → Backup & Maintenance → **Run Database Updates**.
+
+> Do the install right after the first deploy — until it is completed, anyone who opens `/install.php` could run it. After installation it returns 403.
+> Developers: run `composer install` locally to get dev tools/tests, and `composer install --no-dev -o` before committing `vendor/`.
+
+---
+
 ## 1. Server requirements
 - PHP **8.2+** with extensions: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`, `gd` (for WebP)
 - MySQL 8 (or MariaDB 10.4+)
@@ -12,7 +31,7 @@ git clone https://github.com/inforajeshdigital/mksecurex.git
 cd mksecurex
 composer install --no-dev --optimize-autoloader
 ```
-> `vendor/` is not committed. If your hosting has no SSH/Composer, run `composer install --no-dev` locally and upload the `vendor` folder.
+> `vendor/` (production) is committed, so `composer install` is optional on the server.
 
 ## 3. Environment (.env)
 ```bash

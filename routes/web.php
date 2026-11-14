@@ -99,6 +99,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('maintenance/cache', [Admin\MaintenanceController::class, 'clearCache'])->name('maintenance.cache');
             Route::post('maintenance/backup', [Admin\MaintenanceController::class, 'backup'])->name('maintenance.backup');
             Route::post('maintenance/toggle', [Admin\MaintenanceController::class, 'toggle'])->name('maintenance.toggle');
+            Route::post('maintenance/migrate', [Admin\MaintenanceController::class, 'migrate'])->name('maintenance.migrate');
         });
     });
 });
