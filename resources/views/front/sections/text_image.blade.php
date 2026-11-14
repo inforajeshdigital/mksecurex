@@ -27,7 +27,6 @@
                     @else
                         <div class="media-ph"><img class="logo-ph" src="{{ img_url(setting('site_logo')) }}" alt="{{ setting('site_logo_alt') }}" loading="lazy"></div>
                     @endif
-                    <div class="exp-badge"><i class="fa-solid fa-shield-halved"></i><div><strong>{{ setting('site_name') }}</strong><span>{{ setting('site_tagline') }}</span></div></div>
                 </div>
             </div>
         </div>

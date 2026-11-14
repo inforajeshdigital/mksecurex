@@ -220,11 +220,6 @@ img { max-width: 100%; height: auto; }
 .media-ph { border-radius: 26px; aspect-ratio: 5/4.2; background: var(--mk-blue-grad); display: grid; place-items: center; position: relative; overflow: hidden; box-shadow: var(--mk-shadow-lg); }
 .media-ph img.logo-ph { width: 46%; border-radius: 20px; background: #fff; padding: 14px; box-shadow: 0 20px 50px rgba(0,0,0,.3); aspect-ratio: auto; }
 .media-ph::after { content: ''; position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; border: 22px solid rgba(232,163,23,.35); right: -25%; bottom: -35%; }
-.exp-badge { position: absolute; left: -24px; bottom: 32px; background: #fff; border-radius: 18px; padding: 1rem 1.2rem; box-shadow: var(--mk-shadow-lg); display: flex; gap: .8rem; align-items: center; z-index: 3; max-width: 260px; }
-.exp-badge i { width: 46px; height: 46px; border-radius: 12px; background: var(--mk-blue-grad); color: var(--mk-accent-2); display: grid; place-items: center; font-size: 1.2rem; flex: 0 0 46px; }
-.exp-badge strong { font-family: 'Plus Jakarta Sans'; color: var(--mk-heading); line-height: 1.2; display: block; font-size: .95rem; }
-.exp-badge span { font-size: .8rem; color: #6b7690; }
-@media (max-width: 575px) { .exp-badge { left: 10px; } }
 .point-list { list-style: none; padding: 0; margin: 1.5rem 0; }
 .point-list li { display: flex; gap: 1rem; margin-bottom: 1.1rem; }
 .point-list .pi { width: 44px; height: 44px; border-radius: 12px; background: var(--mk-light); color: var(--mk-primary); display: grid; place-items: center; flex: 0 0 44px; }
