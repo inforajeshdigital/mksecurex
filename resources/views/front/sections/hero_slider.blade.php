@@ -8,11 +8,10 @@
                 <div class="hero-bg" style="background-image:url('{{ img_url($sl->background_image) }}')" role="img" aria-label="{{ $sl->image_alt ?: $sl->heading }}"></div>
                 <div class="hero-overlay"></div>
             @endif
-            <div class="hero-swoosh"></div><div class="hero-swoosh two"></div>
             <div class="container">
                 <div class="hero-inner">
                     <div class="row align-items-center w-100 g-5">
-                        <div class="col-lg-7 hero-anim">
+                        <div class="{{ $sl->side_image ? 'col-lg-7' : 'col-lg-9 col-xl-8' }} hero-anim">
                             @if($sl->badge)<div><span class="badge-pill"><i class="fa-solid fa-shield-halved"></i> {{ $sl->badge }}</span></div>@endif
                             @if($loop->first)<h1>{{ $sl->heading }}</h1>@else<h2 class="h1" style="color:#fff;font-size:clamp(2.1rem,5vw,3.9rem);margin:1.2rem 0 1rem">{{ $sl->heading }}</h2>@endif
                             @if($sl->subheading)<p class="hero-sub">{{ $sl->subheading }}</p>@endif
@@ -22,19 +21,11 @@
                                 @if($sl->btn2_text)<a href="{{ link_url($sl->btn2_url) }}" class="btn btn-outline-light-mk btn-lg">{{ $sl->btn2_text }}</a>@endif
                             </div>
                         </div>
-                        <div class="col-lg-5 d-none d-lg-block">
-                            @if($sl->side_image)
+                        @if($sl->side_image)
+                            <div class="col-lg-5 d-none d-lg-block">
                                 <div class="hero-img-card"><img src="{{ img_url($sl->side_image) }}" alt="{{ $sl->image_alt ?: $sl->heading }}" @if(!$loop->first) loading="lazy" @endif></div>
-                            @else
-                                <div class="hero-emblem">
-                                    <div class="ring"></div><div class="ring r2"></div>
-                                    <div class="shield"><i class="fa-solid fa-user-shield"></i></div>
-                                    <div class="chip c1"><i class="fa-solid fa-shield-halved"></i> Trained Guards</div>
-                                    <div class="chip c2"><i class="fa-solid fa-people-group"></i> Skilled Manpower</div>
-                                    <div class="chip c3"><i class="fa-solid fa-building-circle-check"></i> Facility Support</div>
-                                </div>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
