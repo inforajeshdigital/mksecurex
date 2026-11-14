@@ -250,14 +250,12 @@ img { max-width: 100%; height: auto; }
 .industry-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,23,58,.05) 10%, rgba(6,23,58,.92) 85%); z-index: -1; }
 .industry-card .ph-icon { position: absolute; top: 1.4rem; right: 1.4rem; font-size: 4.5rem; color: rgba(255,255,255,.1); z-index: -1; }
 .industry-card .content { padding: 1.6rem; width: 100%; }
-.industry-card .ic { width: 50px; height: 50px; border-radius: 14px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; color: var(--mk-accent-2); font-size: 1.25rem; margin-bottom: .9rem; backdrop-filter: blur(6px); transition: .3s; }
 .industry-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: .4rem; }
 .industry-card p { color: rgba(255,255,255,.75); font-size: .9rem; margin-bottom: .8rem; max-height: 0; opacity: 0; overflow: hidden; transition: all .45s ease; }
 .industry-card .go { color: var(--mk-accent-2); font-weight: 700; font-size: .9rem; }
 .industry-card:hover { transform: translateY(-6px); box-shadow: var(--mk-shadow-lg); color: #fff; }
 .industry-card:hover img { transform: scale(1.08); }
 .industry-card:hover p { max-height: 120px; opacity: 1; }
-.industry-card:hover .ic { background: var(--mk-gold-grad); color: #1d1300; border-color: transparent; }
 @media (hover: none) { .industry-card p { max-height: none; opacity: 1; } }
 
 /* Feature cards on dark backgrounds */

@@ -116,7 +116,7 @@
                 <div class="text-center mb-5 reveal"><span class="eyebrow">Explore More</span><h2 class="section-title">Related Industries</h2></div>
                 <div class="row g-4 justify-content-center">
                     @foreach($related as $in)
-                        <div class="col-sm-6 col-lg-4 reveal"><a href="{{ $in->url }}" class="industry-card"><i class="fa-solid {{ $in->icon }} ph-icon"></i><div class="content"><div class="ic"><i class="fa-solid {{ $in->icon }}"></i></div><h3>{{ $in->title }}</h3><p>{{ $in->short_description }}</p><span class="go">Explore Industry <i class="fa-solid fa-arrow-right ms-1"></i></span></div></a></div>
+                        <div class="col-sm-6 col-lg-4 reveal"><a href="{{ $in->url }}" class="industry-card"><i class="fa-solid {{ $in->icon }} ph-icon"></i><div class="content"><h3>{{ $in->title }}</h3><p>{{ $in->short_description }}</p><span class="go">Explore Industry <i class="fa-solid fa-arrow-right ms-1"></i></span></div></a></div>
                     @endforeach
                 </div>
             </div>
