@@ -55,6 +55,12 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     /*
+    | The one public address of the website. Visitors on the bare domain or on
+    | http are 301-redirected here (see ForceCanonicalUrl). Empty = disabled.
+    */
+    'canonical_url' => env('CANONICAL_URL', 'https://www.mksecurex.com'),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------

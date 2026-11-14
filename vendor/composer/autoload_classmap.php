@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Controllers\\Front\\ServiceController' => $baseDir . '/app/Http/Controllers/Front/ServiceController.php',
     'App\\Http\\Middleware\\CheckPermission' => $baseDir . '/app/Http/Middleware/CheckPermission.php',
     'App\\Http\\Middleware\\EnsureAdmin' => $baseDir . '/app/Http/Middleware/EnsureAdmin.php',
+    'App\\Http\\Middleware\\ForceCanonicalUrl' => $baseDir . '/app/Http/Middleware/ForceCanonicalUrl.php',
     'App\\Http\\Middleware\\HandleRedirects' => $baseDir . '/app/Http/Middleware/HandleRedirects.php',
     'App\\Http\\Middleware\\SiteMaintenance' => $baseDir . '/app/Http/Middleware/SiteMaintenance.php',
     'App\\Mail\\NewEnquiryMail' => $baseDir . '/app/Mail/NewEnquiryMail.php',

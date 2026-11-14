@@ -225,4 +225,23 @@ class WebsiteTest extends TestCase
         $this->get('/admin/settings/general')->assertForbidden();
         $this->get('/admin/users')->assertForbidden();
     }
+
+    public function test_all_domain_variants_redirect_to_https_www(): void
+    {
+        config(['app.canonical_url' => 'https://www.mksecurex.com']);
+        $to = 'https://www.mksecurex.com/about-us?x=1';
+
+        $this->get('http://mksecurex.com/about-us?x=1')->assertStatus(301)->assertRedirect($to);
+        $this->get('https://mksecurex.com/about-us?x=1')->assertStatus(301)->assertRedirect($to);
+        $this->get('http://www.mksecurex.com/about-us?x=1', ['X-Forwarded-Proto' => 'http'])->assertStatus(301)->assertRedirect($to);
+        $this->get('http://MKSECUREX.com/')->assertRedirect('https://www.mksecurex.com/');
+
+        // Already canonical (incl. behind Hostinger's CDN over plain http) → no loop.
+        $this->get('https://www.mksecurex.com/about-us')->assertOk();
+        $this->get('http://www.mksecurex.com/about-us', ['X-Forwarded-Proto' => 'https'])->assertOk();
+        $this->get('http://www.mksecurex.com/about-us')->assertOk();
+
+        // Other hosts (local / preview) are never touched.
+        $this->get('http://localhost/about-us')->assertOk();
+    }
 }

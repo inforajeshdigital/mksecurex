@@ -510,6 +510,7 @@ class ComposerStaticInit53b5d56b3b7e3cbac1713e68c8850f6c
         'App\\Http\\Controllers\\Front\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/ServiceController.php',
         'App\\Http\\Middleware\\CheckPermission' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckPermission.php',
         'App\\Http\\Middleware\\EnsureAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/EnsureAdmin.php',
+        'App\\Http\\Middleware\\ForceCanonicalUrl' => __DIR__ . '/../..' . '/app/Http/Middleware/ForceCanonicalUrl.php',
         'App\\Http\\Middleware\\HandleRedirects' => __DIR__ . '/../..' . '/app/Http/Middleware/HandleRedirects.php',
         'App\\Http\\Middleware\\SiteMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/SiteMaintenance.php',
         'App\\Mail\\NewEnquiryMail' => __DIR__ . '/../..' . '/app/Mail/NewEnquiryMail.php',
