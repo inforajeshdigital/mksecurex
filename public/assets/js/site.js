@@ -2,6 +2,18 @@
 (function () {
     'use strict';
 
+    // Fit the homepage banner in the first screen: measure top bar + header height
+    const heroEl = document.querySelector('.hero');
+    if (heroEl) {
+        const setHeroOffset = () => {
+            const top = Math.round(heroEl.getBoundingClientRect().top + window.scrollY);
+            document.documentElement.style.setProperty('--hero-offset', top + 'px');
+        };
+        setHeroOffset();
+        window.addEventListener('resize', setHeroOffset);
+        window.addEventListener('load', setHeroOffset);
+    }
+
     // Sticky header shadow + back-to-top
     const header = document.querySelector('.site-header');
     const backTop = document.querySelector('.back-top');
