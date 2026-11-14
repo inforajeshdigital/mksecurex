@@ -83,6 +83,8 @@ class ServiceController extends AdminController
         $data['features'] = $this->rows($request->input('features'), ['title', 'text']);
         $data['benefits'] = $this->rows($request->input('benefits'), ['title', 'text']);
         $data['process'] = $this->rows($request->input('process'), ['title', 'text']);
+        $data['show_banner'] = $request->boolean('show_banner');
+        $data['show_image'] = $request->boolean('show_image');
         $data['image'] = $this->image($request, 'image', $service?->image, $data['image_alt'] ?? null);
         $data['banner_image'] = $this->image($request, 'banner_image', $service?->banner_image, $data['image_alt'] ?? null);
         unset($data['seo']);

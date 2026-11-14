@@ -63,7 +63,7 @@ return [
         ],
         'cta' => [
             'label' => 'Call To Action', 'icon' => 'fa-bullhorn',
-            'fields' => ['heading', 'subheading', 'button_text', 'button_url', 'button2_text', 'button2_url', 'image'], 'items' => [],
+            'fields' => ['heading', 'subheading', 'button_text', 'button_url', 'button2_text', 'button2_url'], 'items' => [],
         ],
         'enquiry_form' => [
             'label' => 'Enquiry Form', 'icon' => 'fa-envelope-open-text',

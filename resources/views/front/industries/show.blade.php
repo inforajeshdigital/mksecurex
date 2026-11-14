@@ -6,7 +6,7 @@
         'title' => $industry->title,
         'subtitle' => $industry->short_description,
         'badge' => 'Industries We Serve',
-        'image' => $industry->banner_image ?: $industry->image,
+        'image' => $industry->hero_image,
         'imageAlt' => $industry->image_alt,
         'breadcrumbs' => $breadcrumbs,
         'buttons' => [['text' => 'Request a Quote', 'url' => '#enquiry'], ['text' => 'View Services', 'url' => '#industry-services']],
@@ -17,8 +17,8 @@
             <div class="row g-5">
                 <div class="col-lg-8">
                     @if($industry->intro)<p class="detail-intro reveal">{{ $industry->intro }}</p>@endif
-                    @if($industry->image)
-                        <img src="{{ img_url($industry->image) }}" alt="{{ $industry->image_alt ?: $industry->title }}" class="w-100 rounded-4 shadow my-4 reveal" style="aspect-ratio:16/8;object-fit:cover" loading="lazy">
+                    @if($industry->content_image)
+                        <img src="{{ img_url($industry->content_image) }}" alt="{{ $industry->image_alt ?: $industry->title }}" class="w-100 rounded-4 shadow my-4 reveal" style="aspect-ratio:16/8;object-fit:cover" loading="lazy">
                     @endif
                     <h2 class="h3 mt-4 reveal">Industry Overview</h2>
                     <div class="rich-content reveal">{!! $industry->description !!}</div>

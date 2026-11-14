@@ -13,7 +13,7 @@
             <div class="col-md-6"><label class="form-label">Role</label><input type="text" class="form-control" value="{{ $user->role?->name }}" disabled></div>
             <div class="col-12"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk me-1"></i> Save Profile</button> <a href="{{ route('admin.password') }}" class="btn btn-soft ms-1"><i class="fa-solid fa-key me-1"></i> Change Password</a></div>
         </div></div></div></div>
-        <div class="col-md-4"><div class="a-card"><div class="a-card-body">@include('admin.partials.image-field', ['name' => 'avatar', 'label' => 'Avatar', 'value' => $user->avatar])</div></div></div>
+        <div class="col-md-4"><div class="a-card"><div class="a-card-body">@include('admin.partials.image-field', ['name' => 'avatar', 'label' => 'Avatar', 'value' => $user->avatar, 'size' => '300x300', 'sizeNote' => 'square'])</div></div></div>
     </div>
 </form>
 @endsection

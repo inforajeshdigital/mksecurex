@@ -74,6 +74,8 @@ class IndustryController extends AdminController
         $data['challenges'] = $this->rows($request->input('challenges'), ['title', 'text']);
         $data['solutions'] = $this->rows($request->input('solutions'), ['title', 'text']);
         $data['benefits'] = $this->rows($request->input('benefits'), ['title', 'text']);
+        $data['show_banner'] = $request->boolean('show_banner');
+        $data['show_image'] = $request->boolean('show_image');
         $data['image'] = $this->image($request, 'image', $industry?->image, $data['image_alt'] ?? null);
         $data['banner_image'] = $this->image($request, 'banner_image', $industry?->banner_image, $data['image_alt'] ?? null);
         unset($data['seo']);

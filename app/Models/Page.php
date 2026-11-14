@@ -10,9 +10,9 @@ class Page extends Model
 {
     use HasSeo, SoftDeletes;
 
-    protected $fillable = ['title', 'slug', 'template', 'excerpt', 'banner_image', 'banner_alt', 'is_system', 'status', 'published_on', 'sort_order'];
+    protected $fillable = ['title', 'slug', 'template', 'excerpt', 'banner_image', 'banner_alt', 'show_banner', 'is_system', 'status', 'published_on', 'sort_order'];
 
-    protected $casts = ['is_system' => 'boolean', 'published_on' => 'date'];
+    protected $casts = ['show_banner' => 'boolean', 'is_system' => 'boolean', 'published_on' => 'date'];
 
     public function sections()
     {
@@ -32,5 +32,10 @@ class Page extends Model
     public function getUrlAttribute(): string
     {
         return $this->slug === 'home' ? url('/') : url($this->slug);
+    }
+
+    public function getHeroImageAttribute(): ?string
+    {
+        return ($this->show_banner ?? true) ? $this->banner_image : null;
     }
 }

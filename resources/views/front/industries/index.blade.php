@@ -5,7 +5,7 @@
         'title' => $page->title ?? 'Industries We Serve',
         'subtitle' => $page->excerpt ?? null,
         'badge' => 'Industries',
-        'image' => $page->banner_image ?? null,
+        'image' => $page?->hero_image,
         'imageAlt' => $page->banner_alt ?? null,
         'breadcrumbs' => $breadcrumbs,
     ])

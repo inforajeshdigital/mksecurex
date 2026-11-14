@@ -20,7 +20,7 @@
                     <div class="{{ $wide ? 'col-12' : ($f['type'] === 'image' ? 'col-md-6 col-xl-4' : 'col-md-6') }}">
                         @switch($f['type'])
                             @case('image')
-                                @include('admin.partials.image-field', ['name' => $key, 'label' => $f['label'], 'value' => setting($key), 'help' => $f['help'] ?? null])
+                                @include('admin.partials.image-field', ['name' => $key, 'label' => $f['label'], 'value' => setting($key), 'help' => $f['help'] ?? null, 'size' => $f['size'] ?? null, 'sizeNote' => $f['sizeNote'] ?? null])
                                 @break
                             @case('toggle')
                                 <div class="form-check form-switch mt-md-4 pt-md-2">

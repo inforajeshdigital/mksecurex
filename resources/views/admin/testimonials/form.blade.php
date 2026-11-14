@@ -16,7 +16,7 @@
         <div class="col-xl-4">
             <div class="a-card"><div class="a-card-body">
                 <div class="form-check form-switch mb-3"><input class="form-check-input" type="checkbox" name="is_active" value="1" id="act" @checked(old('is_active', $testimonial->is_active))><label class="form-check-label fw-semibold" for="act">Active</label></div>
-                @include('admin.partials.image-field', ['name' => 'image', 'label' => 'Photo / Logo', 'value' => $testimonial->image])
+                @include('admin.partials.image-field', ['name' => 'image', 'label' => 'Photo / Logo', 'value' => $testimonial->image, 'size' => '300x300', 'sizeNote' => 'square, shown as a small round photo'])
             </div></div>
             <div class="d-grid gap-2"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk me-1"></i> Save</button><a href="{{ route('admin.testimonials.index') }}" class="btn btn-light">Cancel</a></div>
         </div>

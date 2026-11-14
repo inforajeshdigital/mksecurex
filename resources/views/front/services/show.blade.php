@@ -6,7 +6,7 @@
         'title' => $service->title,
         'subtitle' => $service->short_description,
         'badge' => 'Our Services',
-        'image' => $service->banner_image ?: $service->image,
+        'image' => $service->hero_image,
         'imageAlt' => $service->image_alt,
         'breadcrumbs' => $breadcrumbs,
         'buttons' => [['text' => 'Enquire Now', 'url' => '#enquiry'], ['text' => 'Call Us', 'url' => tel_link(setting('contact_phone'))]],
@@ -18,8 +18,8 @@
                 <div class="col-lg-8">
                     @if($service->intro)<p class="detail-intro reveal">{{ $service->intro }}</p>@endif
 
-                    @if($service->image)
-                        <img src="{{ img_url($service->image) }}" alt="{{ $service->image_alt ?: $service->title }}" class="w-100 rounded-4 shadow my-4 reveal" style="aspect-ratio:16/8;object-fit:cover" loading="lazy">
+                    @if($service->content_image)
+                        <img src="{{ img_url($service->content_image) }}" alt="{{ $service->image_alt ?: $service->title }}" class="w-100 rounded-4 shadow my-4 reveal" style="aspect-ratio:16/8;object-fit:cover" loading="lazy">
                     @endif
 
                     <h2 class="h3 mt-4 reveal">Service Overview</h2>

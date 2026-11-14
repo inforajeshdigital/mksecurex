@@ -13,7 +13,8 @@
                 @if($f['type'] === 'textarea')
                     <textarea name="{{ $name }}[{{ $index }}][{{ $key }}]" class="form-control form-control-sm" rows="2">{{ $val }}</textarea>
                 @elseif($f['type'] === 'image')
-                    <div class="img-field p-2">
+                    <div class="img-field p-2" data-rec-w="1200" data-rec-h="900">
+                        <div class="size-hint py-1"><i class="fa-solid fa-ruler-combined"></i> 1200 × 900 px</div>
                         <div class="preview" style="height:80px">@if($val)<img src="{{ img_url($val) }}" alt="">@else<i class="fa-regular fa-image"></i>@endif</div>
                         <input type="hidden" name="{{ $name }}[{{ $index }}][image_current]" value="{{ $val }}">
                         <input type="hidden" name="item_image_{{ $index }}_path" value="">

@@ -57,6 +57,14 @@ class AppServiceProvider extends ServiceProvider
             } catch (\Throwable $e) {
                 $view->with('newEnquiries', 0);
             }
+            // After a Git deploy, tell the admin when database updates are waiting.
+            try {
+                $migrator = app('migrator');
+                $files = array_keys($migrator->getMigrationFiles(database_path('migrations')));
+                $view->with('pendingMigrations', count(array_diff($files, $migrator->getRepository()->getRan())));
+            } catch (\Throwable $e) {
+                $view->with('pendingMigrations', 0);
+            }
         });
 
         foreach ([Service::class, Industry::class] as $model) {

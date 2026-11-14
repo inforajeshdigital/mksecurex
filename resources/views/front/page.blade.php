@@ -9,7 +9,7 @@
 
 @section('content')
     @unless($hasHero)
-        @include('front.partials.page-hero', ['title' => $page->title, 'subtitle' => $page->excerpt, 'image' => $page->banner_image, 'imageAlt' => $page->banner_alt, 'breadcrumbs' => $breadcrumbs])
+        @include('front.partials.page-hero', ['title' => $page->title, 'subtitle' => $page->excerpt, 'image' => $page->hero_image, 'imageAlt' => $page->banner_alt, 'breadcrumbs' => $breadcrumbs])
     @endunless
 
     @foreach($sections as $section)

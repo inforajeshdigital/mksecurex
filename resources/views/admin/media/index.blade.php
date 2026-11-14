@@ -11,6 +11,7 @@
                 <i class="fa-solid fa-cloud-arrow-up fa-2x text-primary mb-2"></i>
                 <div class="fw-semibold">Drop images here or click to upload</div>
                 <div class="small text-muted">JPG, PNG, WebP, GIF · max 4 MB each · up to 20 files · JPG/PNG auto-optimised to WebP</div>
+                <div class="small mt-2" style="color:#7a5200"><i class="fa-solid fa-ruler-combined me-1"></i> Size guide: Hero slide 1920×1080 · Page/Service banner 1920×600 · Service card 1200×750 · Industry card 1200×800 · Text+Image 1200×1000 · Gallery 1200×900 · Logo 400×150 · Social share 1200×630 · Photo 300×300</div>
                 <input type="file" name="files[]" accept=".jpg,.jpeg,.png,.webp,.gif,.ico" multiple hidden>
             </div>
         </form>

@@ -43,6 +43,25 @@
     });
     $(document).on('input', '[data-slug-target]', function (e) { if (e.originalEvent) $(this).data('touched', true); });
 
+    // Compare an image's real size with the recommended size and show a friendly note
+    function checkSize(box, url) {
+        const w = +box.data('rec-w'), h = +box.data('rec-h'), out = box.find('.size-check');
+        if (!w || !h) return;
+        const img = new Image();
+        img.onload = () => {
+            const iw = img.naturalWidth, ih = img.naturalHeight;
+            const ratioOff = Math.abs(iw / ih - w / h) / (w / h) > 0.2;
+            if (iw < w * 0.7 || ih < h * 0.7) {
+                out.html(`<span class="text-danger"><i class="fa-solid fa-triangle-exclamation me-1"></i>Selected image is ${iw} × ${ih} px — smaller than recommended, it may look blurry.</span>`);
+            } else if (ratioOff) {
+                out.html(`<span class="text-warning"><i class="fa-solid fa-crop-simple me-1"></i>Selected image is ${iw} × ${ih} px — different shape than recommended, edges may be cropped.</span>`);
+            } else {
+                out.html(`<span class="text-success"><i class="fa-solid fa-circle-check me-1"></i>Good size: ${iw} × ${ih} px</span>`);
+            }
+        };
+        img.src = url;
+    }
+
     // Image field: preview + remove + picker
     $(document).on('change', '.img-field input[type=file]', function () {
         const f = this.files && this.files[0];
@@ -51,6 +70,7 @@
         const url = URL.createObjectURL(f);
         box.find('.preview').html(`<img src="${url}" alt="">`);
         box.find('input[type=checkbox][name$="_remove"]').prop('checked', false);
+        checkSize(box, url);
     });
     $(document).on('change', '.img-field input[name$="_remove"]', function () {
         if (this.checked) $(this).closest('.img-field').find('.preview').html('<i class="fa-regular fa-image"></i>');
@@ -79,6 +99,7 @@
                     pickerTarget.find('.preview').html(`<img src="${m.url}" alt="">`);
                     pickerTarget.find('input[type=file]').val('');
                     pickerTarget.find('input[name$="_remove"]').prop('checked', false);
+                    checkSize(pickerTarget, m.url);
                     bootstrap.Modal.getInstance(document.getElementById('mediaPicker')).hide();
                 });
                 grid.append(el);

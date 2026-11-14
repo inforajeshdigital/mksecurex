@@ -71,6 +71,13 @@
     </header>
 
     <main class="a-content">
+        @if(!empty($pendingMigrations) && $user->canAccess('maintenance'))
+            <div class="alert alert-warning border-0 shadow-sm rounded-3 d-flex flex-wrap align-items-center gap-2">
+                <i class="fa-solid fa-database"></i>
+                <span class="me-auto"><strong>Database update available</strong> — a new website update needs {{ $pendingMigrations }} database change(s). Some new options won’t save until you apply it.</span>
+                <form action="{{ route('admin.maintenance.migrate') }}" method="POST">@csrf<button class="btn btn-sm btn-primary"><i class="fa-solid fa-rotate me-1"></i> Run Database Updates</button></form>
+            </div>
+        @endif
         @include('admin.partials.alerts')
         @yield('content')
     </main>

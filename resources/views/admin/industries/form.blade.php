@@ -30,9 +30,10 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-3"><label class="form-label">Status</label><select name="status" class="form-select"><option value="published" @selected(old('status', $industry->status) === 'published')>Published</option><option value="draft" @selected(old('status', $industry->status) === 'draft')>Draft</option></select></div>
-                            @include('admin.partials.image-field', ['name' => 'image', 'label' => 'Card Image', 'value' => $industry->image])
-                            @include('admin.partials.image-field', ['name' => 'banner_image', 'label' => 'Banner Image', 'value' => $industry->banner_image])
+                            @include('admin.partials.image-field', ['name' => 'image', 'label' => 'Card / Featured Image', 'value' => $industry->image, 'size' => '1200x800', 'sizeNote' => 'used on industry cards'])
+                            @include('admin.partials.image-field', ['name' => 'banner_image', 'label' => 'Banner Image (top of detail page)', 'value' => $industry->banner_image, 'size' => '1920x600', 'sizeNote' => 'wide, text sits on the left'])
                             <div class="mb-3"><label class="form-label">Image Alt Text</label><input type="text" name="image_alt" class="form-control" value="{{ old('image_alt', $industry->image_alt) }}"></div>
+                            @include('admin.partials.display-options', ['model' => $industry])
                         </div>
                     </div>
                 </div>

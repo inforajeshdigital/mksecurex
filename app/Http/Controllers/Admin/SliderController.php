@@ -62,6 +62,8 @@ class SliderController extends AdminController
             'btn2_url' => ['nullable', 'string', 'max:255'],
         ]);
         $data['is_active'] = $request->boolean('is_active');
+        $data['show_background'] = $request->boolean('show_background');
+        $data['show_side_image'] = $request->boolean('show_side_image');
         $data['image'] = $this->image($request, 'image', $slider?->image, $data['image_alt'] ?? null);
 
         return $data;

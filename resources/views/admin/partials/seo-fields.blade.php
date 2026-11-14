@@ -36,7 +36,7 @@
                 <select name="seo[og_type]" class="form-select">@foreach(['website', 'article', 'product', 'profile'] as $t)<option @selected($v('og_type', 'website') === $t)>{{ $t }}</option>@endforeach</select></div>
             <div class="col-md-3"><label class="form-label">OG URL</label><input type="url" name="seo[og_url]" value="{{ $v('og_url') }}" class="form-control" placeholder="auto"></div>
             <div class="col-12"><label class="form-label">OG Description</label><textarea name="seo[og_description]" rows="2" class="form-control">{{ $v('og_description') }}</textarea></div>
-            <div class="col-md-6">@include('admin.partials.image-field', ['name' => 'seo_og_image', 'label' => 'OG Image (1200×630)', 'value' => $seo?->og_image])</div>
+            <div class="col-md-6">@include('admin.partials.image-field', ['name' => 'seo_og_image', 'label' => 'OG Image (Facebook / WhatsApp / LinkedIn share)', 'value' => $seo?->og_image, 'size' => '1200x630'])</div>
         </div>
 
         <hr class="my-4">
@@ -46,7 +46,7 @@
                 <select name="seo[twitter_card]" class="form-select">@foreach(['summary_large_image', 'summary'] as $t)<option @selected($v('twitter_card', 'summary_large_image') === $t)>{{ $t }}</option>@endforeach</select></div>
             <div class="col-md-8"><label class="form-label">Twitter Title</label><input type="text" name="seo[twitter_title]" value="{{ $v('twitter_title') }}" class="form-control"></div>
             <div class="col-12"><label class="form-label">Twitter Description</label><textarea name="seo[twitter_description]" rows="2" class="form-control">{{ $v('twitter_description') }}</textarea></div>
-            <div class="col-md-6">@include('admin.partials.image-field', ['name' => 'seo_twitter_image', 'label' => 'Twitter Image', 'value' => $seo?->twitter_image])</div>
+            <div class="col-md-6">@include('admin.partials.image-field', ['name' => 'seo_twitter_image', 'label' => 'Twitter Image', 'value' => $seo?->twitter_image, 'size' => '1200x630'])</div>
         </div>
 
         <hr class="my-4">

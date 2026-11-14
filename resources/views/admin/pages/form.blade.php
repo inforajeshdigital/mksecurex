@@ -29,8 +29,11 @@
                             <div class="mb-3"><label class="form-label">Status</label>
                                 <select name="status" class="form-select"><option value="published" @selected(old('status', $page->status) === 'published')>Published</option><option value="draft" @selected(old('status', $page->status) === 'draft')>Draft</option></select></div>
                             <div class="mb-3"><label class="form-label">Published On</label><input type="date" name="published_on" class="form-control" value="{{ old('published_on', optional($page->published_on)->format('Y-m-d')) }}"></div>
-                            @include('admin.partials.image-field', ['name' => 'banner_image', 'label' => 'Banner Image', 'value' => $page->banner_image])
+                            @include('admin.partials.image-field', ['name' => 'banner_image', 'label' => 'Banner Image', 'value' => $page->banner_image, 'size' => '1920x600', 'sizeNote' => 'wide landscape, text sits on the left'])
                             <div class="mb-3"><label class="form-label">Banner Image Alt Text</label><input type="text" name="banner_alt" class="form-control" value="{{ old('banner_alt', $page->banner_alt) }}"></div>
+                            <div class="display-opts">
+                                <div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="show_banner" value="1" id="pbn" @checked(old('show_banner', $page->exists ? $page->show_banner : true))><label class="form-check-label fw-semibold" for="pbn">Show banner image<small>Off = plain blue banner without photo. A “Page Hero Banner” section uses its own image.</small></label></div>
+                            </div>
                         </div>
                     </div>
                 </div>

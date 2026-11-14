@@ -170,6 +170,37 @@ class WebsiteTest extends TestCase
         $this->post('/admin/pages', ['title' => 'Services', 'slug' => 'services', 'status' => 'published'])->assertSessionHasErrors('slug');
     }
 
+    public function test_image_show_hide_options_and_no_duplicates(): void
+    {
+        $slide = \App\Models\Slider::orderBy('sort_order')->first();
+        $slide->update(['image' => 'uploads/x/hero.jpg', 'show_background' => true, 'show_side_image' => false]);
+        $html = $this->get('/')->getContent();
+        $this->assertStringContainsString("hero-bg\" style=\"background-image:url('".asset('uploads/x/hero.jpg'), $html);
+        $this->assertStringNotContainsString('hero-img-card', $html);
+
+        $slide->update(['show_background' => false, 'show_side_image' => true]);
+        $html = $this->get('/')->getContent();
+        $this->assertStringNotContainsString("background-image:url('".asset('uploads/x/hero.jpg'), $html);
+        $this->assertStringContainsString('hero-img-card', $html);
+
+        // Same picture must not appear as banner AND inside the content
+        $s = Service::where('slug', 'security-services')->first();
+        $s->update(['image' => 'uploads/x/s.jpg', 'banner_image' => null, 'show_banner' => true, 'show_image' => true]);
+        $this->get('/services/security-services')->assertDontSee('<img src="'.asset('uploads/x/s.jpg'), false);
+        $s->update(['show_banner' => false]);
+        $this->get('/services/security-services')->assertSee('<img src="'.asset('uploads/x/s.jpg'), false);
+        $s->update(['show_banner' => true, 'banner_image' => 'uploads/x/b.jpg', 'show_image' => false]);
+        $this->get('/services/security-services')->assertDontSee('<img src="'.asset('uploads/x/s.jpg'), false)->assertSee('uploads/x/b.jpg');
+
+        // Admin forms save the switches and show size guidance
+        $this->actingAs($this->admin());
+        $this->get("/admin/services/{$s->id}/edit")->assertSee('Recommended size')->assertSee('1920 × 600 px');
+        $this->get("/admin/sliders/{$slide->id}/edit")->assertSee('1920 × 1080 px')->assertSee('Framed image on the right');
+        $this->put("/admin/sliders/{$slide->id}", ['heading' => 'H', 'is_active' => '1', 'show_background' => '1'])->assertRedirect();
+        $this->assertTrue($slide->fresh()->show_background);
+        $this->assertFalse($slide->fresh()->show_side_image);
+    }
+
     public function test_role_permissions_are_enforced(): void
     {
         $sales = User::create(['name' => 'Sales', 'email' => 'sales@test.com', 'password' => 'Password123', 'role_id' => Role::where('slug', 'sales')->first()->id, 'is_active' => true]);

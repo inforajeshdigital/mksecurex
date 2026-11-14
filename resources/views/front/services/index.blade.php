@@ -6,7 +6,7 @@
         'title' => $page->title ?? 'Our Services',
         'subtitle' => $page->excerpt ?? null,
         'badge' => 'What We Do',
-        'image' => $page->banner_image ?? null,
+        'image' => $page?->hero_image,
         'imageAlt' => $page->banner_alt ?? null,
         'breadcrumbs' => $breadcrumbs,
     ])

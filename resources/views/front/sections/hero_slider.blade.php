@@ -4,8 +4,8 @@
     @foreach($slides as $sl)
         <div class="hero-slide {{ $loop->first ? 'active' : '' }}" aria-roledescription="slide" aria-label="{{ $loop->iteration }} of {{ $slides->count() }}">
             <div class="hero-pattern"></div>
-            @if($sl->image)
-                <div class="hero-bg" style="background-image:url('{{ img_url($sl->image) }}')" role="img" aria-label="{{ $sl->image_alt ?: $sl->heading }}"></div>
+            @if($sl->background_image)
+                <div class="hero-bg" style="background-image:url('{{ img_url($sl->background_image) }}')" role="img" aria-label="{{ $sl->image_alt ?: $sl->heading }}"></div>
                 <div class="hero-overlay"></div>
             @endif
             <div class="hero-swoosh"></div><div class="hero-swoosh two"></div>
@@ -23,8 +23,8 @@
                             </div>
                         </div>
                         <div class="col-lg-5 d-none d-lg-block">
-                            @if($sl->image)
-                                <div class="hero-img-card"><img src="{{ img_url($sl->image) }}" alt="{{ $sl->image_alt ?: $sl->heading }}" @if(!$loop->first) loading="lazy" @endif></div>
+                            @if($sl->side_image)
+                                <div class="hero-img-card"><img src="{{ img_url($sl->side_image) }}" alt="{{ $sl->image_alt ?: $sl->heading }}" @if(!$loop->first) loading="lazy" @endif></div>
                             @else
                                 <div class="hero-emblem">
                                     <div class="ring"></div><div class="ring r2"></div>

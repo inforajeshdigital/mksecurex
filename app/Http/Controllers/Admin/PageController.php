@@ -104,6 +104,7 @@ class PageController extends AdminController
         if ($page?->is_system) {
             $data['slug'] = $page->slug; // keep system URLs stable
         }
+        $data['show_banner'] = $request->boolean('show_banner');
         $data['banner_image'] = $this->image($request, 'banner_image', $page?->banner_image, $data['banner_alt'] ?? null);
         unset($data['seo']);
 

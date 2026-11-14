@@ -20,9 +20,9 @@ return [
             'fields' => [
                 'site_name' => ['label' => 'Company / Site Name', 'type' => 'text'],
                 'site_tagline' => ['label' => 'Tagline', 'type' => 'text'],
-                'site_logo' => ['label' => 'Logo', 'type' => 'image', 'help' => 'Recommended: transparent PNG/WebP, height 60–90px.'],
+                'site_logo' => ['label' => 'Logo', 'type' => 'image', 'size' => '400x150', 'sizeNote' => 'transparent PNG, shown 62px tall in the header'],
                 'site_logo_alt' => ['label' => 'Logo Alt Text', 'type' => 'text'],
-                'site_favicon' => ['label' => 'Favicon', 'type' => 'image'],
+                'site_favicon' => ['label' => 'Favicon', 'type' => 'image', 'size' => '512x512', 'sizeNote' => 'square PNG (browser tab icon)'],
                 'admin_email' => ['label' => 'Admin Notification Email', 'type' => 'email', 'help' => 'New enquiries are emailed here.'],
                 'primary_color' => ['label' => 'Primary Color (Blue)', 'type' => 'color'],
                 'accent_color' => ['label' => 'Accent Color (Gold)', 'type' => 'color'],
@@ -47,7 +47,7 @@ return [
         'footer' => [
             'label' => 'Footer Management', 'icon' => 'fa-shoe-prints', 'permission' => 'footer',
             'fields' => [
-                'footer_logo' => ['label' => 'Footer Logo', 'type' => 'image'],
+                'footer_logo' => ['label' => 'Footer Logo', 'type' => 'image', 'size' => '400x150', 'sizeNote' => 'shown on a white badge in the footer'],
                 'footer_about' => ['label' => 'Company Description', 'type' => 'textarea'],
                 'footer_bg' => ['label' => 'Footer Background', 'type' => 'color'],
                 'footer_show_services' => ['label' => 'Show Service Links', 'type' => 'toggle'],
@@ -108,7 +108,7 @@ return [
             'fields' => [
                 'seo_title_suffix' => ['label' => 'Title Suffix', 'type' => 'text', 'help' => 'Appended to page titles, e.g. " | MK Securex".'],
                 'seo_default_description' => ['label' => 'Default Meta Description', 'type' => 'textarea'],
-                'seo_default_og_image' => ['label' => 'Default Social Share Image', 'type' => 'image'],
+                'seo_default_og_image' => ['label' => 'Default Social Share Image', 'type' => 'image', 'size' => '1200x630', 'sizeNote' => 'used when a page has no own share image'],
                 'seo_schema_organization' => ['label' => 'Output Organization & WebSite schema', 'type' => 'toggle'],
                 'seo_schema_localbusiness' => ['label' => 'Output LocalBusiness schema (only if address is verified)', 'type' => 'toggle'],
                 'seo_schema_faq' => ['label' => 'Output FAQPage schema (only if eligible)', 'type' => 'toggle'],

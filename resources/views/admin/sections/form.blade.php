@@ -65,7 +65,7 @@
                             <div class="form-text"><a href="{{ route('admin.faqs.index') }}">Manage FAQs</a></div></div>
                     @endif
                     @if($has('image'))
-                        @include('admin.partials.image-field', ['name' => 'section_image', 'label' => 'Image', 'value' => $section->data['image'] ?? null])
+                        @include('admin.partials.image-field', ['name' => 'section_image', 'label' => 'Image', 'value' => $section->data['image'] ?? null, 'size' => $section->type === 'page_hero' ? '1920x600' : '1200x1000', 'sizeNote' => $section->type === 'page_hero' ? 'wide banner background' : 'shown beside the text'])
                     @endif
                     @if($has('image_alt'))
                         <div class="mb-3"><label class="form-label">Image Alt Text</label><input type="text" name="data[image_alt]" class="form-control" value="{{ $d('image_alt') }}"></div>
