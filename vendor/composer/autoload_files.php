@@ -36,5 +36,5 @@ return array(
     '91892b814db86b8442ad76273bb7aec5' => $vendorDir . '/laravel/framework/src/Illuminate/Reflection/helpers.php',
     '493c6aea52f6009bab023b26c21a386a' => $vendorDir . '/laravel/framework/src/Illuminate/Support/functions.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
-    '6f63623309b417353d909e0e864f4beb' => $baseDir . '/app/Support/helpers.php',
+    '3da92790faa5dffc1987bb1c833160ce' => $baseDir . '/app/Support/helpers.php',
 );

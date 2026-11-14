@@ -15,7 +15,7 @@ The repository already contains the production `vendor/` folder, so a plain `git
 **Future updates:** push to `main` → Hostinger pulls automatically → if the update contains database changes, go to Admin → Backup & Maintenance → **Run Database Updates**.
 
 > Do the install right after the first deploy — until it is completed, anyone who opens `/install.php` could run it. After installation it returns 403.
-> Developers: run `composer install` locally to get dev tools/tests, and `composer install --no-dev -o` before committing `vendor/`.
+> Hostinger runs `composer install` during each build with `proc_open` disabled. That is why `composer.json` has no dev packages and no `@php artisan` scripts, and `vendor/` is committed. To run the tests locally: `composer require --dev phpunit/phpunit:^11 --no-update && composer update phpunit/phpunit`, then `php vendor/bin/phpunit` — but do **not** commit those dev changes.
 
 ---
 
