@@ -1,8 +1,13 @@
 {{-- Inner page banner. Vars: $title, $subtitle, $badge, $image, $imageAlt, $breadcrumbs, $buttons --}}
-<section class="page-hero">
+<section class="page-hero {{ !empty($image) ? 'has-photo' : '' }}" data-overlay="{{ setting('hero_overlay', 'light') }}">
     <div class="hero-pattern"></div>
-    @if(!empty($image))<div class="hero-bg" style="background-image:url('{{ img_url($image) }}')" role="img" aria-label="{{ $imageAlt ?? $title }}"></div>@endif
-    <div class="hero-swoosh"></div>
+    @if(!empty($image))
+        {{-- Photo at full brightness; the overlay only shades the text area on the left --}}
+        <div class="hero-bg" style="background-image:url('{{ img_url($image) }}')" role="img" aria-label="{{ $imageAlt ?? $title }}"></div>
+        <div class="hero-overlay"></div>
+    @else
+        <div class="hero-swoosh"></div>
+    @endif
     <div class="container">
         @if(!empty($breadcrumbs))
             <nav aria-label="breadcrumb">

@@ -25,7 +25,7 @@ return [
                 'site_favicon' => ['label' => 'Favicon', 'type' => 'image', 'size' => '512x512', 'sizeNote' => 'square PNG (browser tab icon)'],
                 'admin_email' => ['label' => 'Admin Notification Email', 'type' => 'email', 'help' => 'New enquiries are emailed here.'],
                 'hero_layout' => ['label' => 'Homepage banner layout', 'type' => 'select', 'options' => ['split' => 'Split – text on the left panel, photo on the right (recommended)', 'full' => 'Full image – text over the photo'], 'help' => 'Split keeps the text off the photo. On phones the photo shows on top with the text below.'],
-                'hero_overlay' => ['label' => 'Homepage banner overlay (Full image layout only)', 'type' => 'select', 'options' => ['none' => 'None – photo fully clear', 'light' => 'Light (recommended)', 'medium' => 'Medium', 'dark' => 'Dark – strongest text contrast'], 'help' => 'Light keeps the banner photo clear and darkens only the area behind the text.'],
+                'hero_overlay' => ['label' => 'Banner overlay (inner page banners & Full image layout)', 'type' => 'select', 'options' => ['none' => 'None – photo fully clear', 'light' => 'Light (recommended)', 'medium' => 'Medium', 'dark' => 'Dark – strongest text contrast'], 'help' => 'Shade behind banner text on Services, Industries, About, Contact and other page banners. Light keeps the photo clear; choose Medium/Dark if text is hard to read on a bright photo.'],
                 'primary_color' => ['label' => 'Primary Color (Blue)', 'type' => 'color'],
                 'accent_color' => ['label' => 'Accent Color (Gold)', 'type' => 'color'],
                 'dark_color' => ['label' => 'Dark Color (Navy)', 'type' => 'color'],

@@ -197,7 +197,25 @@ img { max-width: 100%; height: auto; }
 
 /* ---------- Page hero (inner pages) ---------- */
 .page-hero { position: relative; background: var(--mk-dark); color: #fff; padding: 110px 0 90px; overflow: hidden; }
-.page-hero .hero-bg { transform: none; opacity: .35; }
+.page-hero .hero-bg { transform: none; background-position: right center; }
+/* Inner page banners: photo at full brightness, shade only behind the text (strength: Website Settings → Banner overlay) */
+.page-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(6,23,58,.82) 0%, rgba(6,23,58,.66) 34%, rgba(6,23,58,.2) 58%, rgba(6,23,58,0) 75%); }
+.page-hero[data-overlay="medium"] .hero-overlay { background: linear-gradient(90deg, rgba(6,23,58,.9) 0%, rgba(6,23,58,.75) 38%, rgba(6,23,58,.32) 62%, rgba(6,23,58,.08) 82%); }
+.page-hero[data-overlay="dark"] .hero-overlay { background: linear-gradient(90deg, rgba(6,23,58,.94) 0%, rgba(6,23,58,.85) 45%, rgba(6,23,58,.55) 75%, rgba(6,23,58,.35) 100%); }
+.page-hero[data-overlay="none"] .hero-overlay { background: linear-gradient(90deg, rgba(6,23,58,.45) 0%, rgba(6,23,58,.15) 40%, rgba(6,23,58,0) 60%); }
+.page-hero.has-photo { min-height: clamp(380px, 56vh, 540px); display: flex; align-items: center; padding: 72px 0 64px; }
+.page-hero.has-photo .container { width: 100%; }
+.page-hero.has-photo h1, .page-hero.has-photo p.lead, .page-hero.has-photo .breadcrumb-mk li { text-shadow: 0 2px 12px rgba(6,23,58,.55); }
+.page-hero.has-photo h1 { max-width: 640px; }
+.page-hero.has-photo p.lead { color: rgba(255,255,255,.92); max-width: 560px; }
+.page-hero.has-photo .btn-outline-light-mk { background: rgba(6,23,58,.35); }
+@media (max-width: 991.98px) { /* text spans the full width on phones/tablets */
+    .page-hero .hero-overlay { background: rgba(6,23,58,.55); }
+    .page-hero[data-overlay="medium"] .hero-overlay { background: rgba(6,23,58,.66); }
+    .page-hero[data-overlay="dark"] .hero-overlay { background: rgba(6,23,58,.8); }
+    .page-hero[data-overlay="none"] .hero-overlay { background: rgba(6,23,58,.35); }
+    .page-hero.has-photo { min-height: 0; padding: 64px 0 56px; }
+}
 .page-hero h1 { color: #fff; font-size: clamp(2rem, 4.2vw, 3.2rem); margin: .8rem 0; max-width: 860px; }
 .page-hero p.lead { color: rgba(255,255,255,.78); max-width: 720px; font-size: 1.1rem; }
 .page-hero .container { position: relative; z-index: 2; }
