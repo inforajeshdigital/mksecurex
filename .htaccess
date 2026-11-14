@@ -1,0 +1,21 @@
+# Root .htaccess – lets the site work when the hosting document root is this
+# project folder (shared hosting). If you can point the domain to /public, do that instead.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Never serve sensitive files
+    RewriteRule ^(\.env.*|\.git.*|composer\.(json|lock)|package(-lock)?\.json|artisan|phpunit\.xml|vite\.config\.js)$ - [F,L,NC]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/.*)?$ - [F,L,NC]
+
+    # Old-style /public/... URLs → clean URLs
+    RewriteCond %{THE_REQUEST} \s/public/([^\s?]*) [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Everything else is served from /public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
